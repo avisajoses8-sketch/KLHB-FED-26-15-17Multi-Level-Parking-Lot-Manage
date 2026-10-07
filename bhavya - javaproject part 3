@@ -1,0 +1,21 @@
+ public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        loadFromFile(); // Load existing records using File Handling
+
+        int choice;
+        do {
+            System.out.println("\n========================================");
+            System.out.println("   MULTI-LEVEL PARKING LOT MANAGER     ");
+            System.out.println("========================================");
+            System.out.println("1. Park Vehicle (Entry & Slot Allocation)");
+            System.out.println("2. Remove Vehicle (Exit & Fee Calculation)");
+            System.out.println("3. View Real-Time Slot Availability");
+            System.out.println("4. Exit & Save Records");
+            System.out.print("Enter your choice: ");
+
+            while (!scanner.hasNextInt()) {
+                System.out.print("Invalid input. Enter a number (1-4): ");
+                scanner.next();
+            }
+            choice = scanner.nextInt();
+            scanner.nextLine(); // consume newline
