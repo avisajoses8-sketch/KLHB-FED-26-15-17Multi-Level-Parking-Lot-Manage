@@ -1,0 +1,18 @@
+if (!found) {
+            System.out.println("\n[Error] Vehicle with license plate " + plate + " not found.");
+        }
+    }
+
+    // Helper method for automated fee calculation based on duration and size
+    public static double calculateFee(String type, double minutes) {
+        double ratePerMinute = 1.0;
+        if (type.equalsIgnoreCase("Bike")) {
+            ratePerMinute = 0.5;
+        } else if (type.equalsIgnoreCase("Car")) {
+            ratePerMinute = 1.0;
+        } else if (type.equalsIgnoreCase("SUV")) {
+            ratePerMinute = 1.5;
+        }
+        double fee = minutes * ratePerMinute;
+        return Math.max(fee, 20.0); // Minimum base fee of Rs. 20
+    }
