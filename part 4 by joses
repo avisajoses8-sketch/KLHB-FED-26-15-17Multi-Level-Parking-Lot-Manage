@@ -1,0 +1,17 @@
+ // Conditional statements to control program flow
+            switch (choice) {
+                case 1:
+                    parkVehicle(scanner);
+                    break;
+                case 2:
+                    removeVehicle(scanner);
+                    break;
+                case 3:
+                    viewParkingStatus();
+                    break;
+                case 4:
+                    saveToFile();
+                    System.out.println("Parking records saved successfully. Exiting program...");
+                    break;
+                default:
+                    System.out.println("Invalid choice! Please choose between 1 and 4.");
