@@ -1,0 +1,14 @@
+ // Method to view real-time slot availability across all levels
+    public static void viewParkingStatus() {
+        System.out.println("\n--- Real-Time Parking Slot Status ---");
+        for (int i = 0; i < LEVELS; i++) {
+            System.out.println("Level " + (i + 1) + ":");
+            for (int j = 0; j < SLOTS_PER_LEVEL; j++) {
+                if (vehicleNumber[i][j] == null) {
+                    System.out.println("  Slot " + (j + 1) + " -> [ Available ]");
+                } else {
+                    System.out.println("  Slot " + (j + 1) + " -> [ Occupied | Plate: " + vehicleNumber[i][j] + " | Type: " + vehicleType[i][j] + " ]");
+                }
+            }
+        }
+    }
