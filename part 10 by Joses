@@ -1,0 +1,28 @@
+catch (IOException e) {
+            System.out.println("[Error] Could not save records to file.");
+        }
+    }
+
+    // File Handling: Load previous records upon startup
+    public static void loadFromFile() {
+        File file = new File(DATA_FILE);
+        if (!file.exists()) return;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 5) {
+                    int level = Integer.parseInt(parts[0]);
+                    int slot = Integer.parseInt(parts[1]);
+                    vehicleNumber[level][slot] = parts[2];
+                    vehicleType[level][slot] = parts[3];
+                    entryTime[level][slot] = Long.parseLong(parts[4]);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("[Error] Could not load
+            records from file.");
+        }
+    }
+}
