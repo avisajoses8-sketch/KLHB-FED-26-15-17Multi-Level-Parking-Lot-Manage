@@ -1,0 +1,9 @@
+System.out.println("\n[Success] Vehicle removed from Level " + (i + 1) + ", Slot " + (j + 1));
+                    System.out.println("Vehicle Type: " + type);
+                    System.out.println("Total Parking Duration: " + String.format("%.2f", durationMinutes) + " minutes");
+                    System.out.println("Automated Parking Fee: Rs. " + String.format("%.2f", fee));
+                    saveToFile();
+                    return;
+                }
+            }
+        }
