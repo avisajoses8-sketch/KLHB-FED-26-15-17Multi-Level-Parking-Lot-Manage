@@ -1,0 +1,44 @@
+  } while (choice != 4);
+
+        scanner.close();
+    }
+
+    // Method to allocate space and track vehicle entry
+    public static void parkVehicle(Scanner scanner) {
+        System.out.print("Enter License Plate Number: ");
+        String plate = scanner.nextLine();
+        System.out.print("Enter Vehicle Type (Bike / Car / SUV): ");
+        String type = scanner.nextLine();
+
+        boolean parked = false;
+        // Nested loops to iterate through levels and slots
+        for (int i = 0; i < LEVELS; i++) {
+            for (int j = 0; j < SLOTS_PER_LEVEL; j++) {
+                if (vehicleNumber[i][j] == null) {
+                    vehicleNumber[i][j] = plate;
+                    vehicleType[i][j] = type;
+                    entryTime[i][j] = System.currentTimeMillis(); // Record entry timestamp
+                    parked = true;
+                    System.out.println("\n[Success] Vehicle parked at Level " + (i + 1) + ", Slot " + (j + 1));
+                    saveToFile();
+                    return;
+                }
+            }
+        }
+        if (!parked) {
+            System.out.println("\n[Notice] Sorry, the parking lot is completely full!");
+        }
+    }
+
+    // Method to handle exit, automated fee calculation, and freeing up slots
+    public static void removeVehicle(Scanner scanner) {
+        System.out.print("Enter License Plate Number to Exit: ");
+        String plate = scanner.nextLine();
+
+        boolean found = false;
+        for (int i = 0; i < LEVELS; i++) {
+            for (int j = 0; j < SLOTS_PER_LEVEL; j++) {
+                if (vehicleNumber[i][j] != null && vehicleNumber[i][j].equalsIgnoreCase(plate)) {
+                    String type = vehicleType[i][j];
+                    long entry = entryTime[i][j];
+                    long exit = System.currentTimeMillis();
