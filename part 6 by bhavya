@@ -1,0 +1,10 @@
+ // Free up slot
+                    vehicleNumber[i][j] = null;
+                    vehicleType[i][j] = null;
+                    entryTime[i][j] = 0;
+                    found = true;
+
+                    // Automated duration and fee calculation
+                    long durationMillis = exit - entry;
+                    double durationMinutes = durationMillis / (1000.0 * 60.0);
+                    double fee = calculateFee(type, durationMinutes);
